@@ -1,0 +1,64 @@
+rails new jobs_board
+
+rails g model job title:string description:text company:string url:string
+rake db:migrate
+rails g controller jobs
+routes.rb
+   resources :jobs
+   root "jobs#index"
+jobs_controller.rb
+   def index
+   end
+
+rails g model category name:string
+rake db:migrate
+rails g migration add_category_id_to_jobs category_id:integer
+rake db:migrate
+
+category.rb
+   has_many :jobs
+job.rb
+   belongs_to :category
+
+rails c
+Category.connection
+Catogory
+Category.create(name: "Full Time")
+Category.create(name: "Part Time")
+Category.create(name: "Freelance")
+Category.create(name: "Consulting")
+Category.all
+Job
+
+reload!
+@job = Job.last
+@job = Job.find(3)
+@job = Job.find(4)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
